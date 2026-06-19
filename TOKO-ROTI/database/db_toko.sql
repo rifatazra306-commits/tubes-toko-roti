@@ -1,5 +1,5 @@
 -- SQL Dump untuk database db_toko
--- Dimodifikasi untuk Laravel TOKO-ROTI
+-- Dimodifikasi untuk Laravel TOKO-ROTI (Optimasi panjang KEY)
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -13,7 +13,7 @@ USE `db_toko`;
 --
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(200) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `password` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -23,15 +23,16 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 
 -- --------------------------------------------------------
 -- Struktur table `bom_produk`
+-- (Dioptimalkan: Panjang VARCHAR diturunkan ke 50 agar tidak over-limit di utf8mb4)
 --
 CREATE TABLE `bom_produk` (
-  `kode_bom` varchar(100) NOT NULL,
-  `kode_bk` varchar(100) NOT NULL,
-  `kode_produk` varchar(100) NOT NULL,
+  `kode_bom` varchar(50) NOT NULL,
+  `kode_bk` varchar(50) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
   `nama_produk` varchar(200) NOT NULL,
   `kebutuhan` varchar(200) NOT NULL,
   PRIMARY KEY (`kode_bom`, `kode_bk`, `kode_produk`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; -- Diubah ke InnoDB agar lebih modern & aman
 
 INSERT INTO `bom_produk` (`kode_bom`, `kode_bk`, `kode_produk`, `nama_produk`, `kebutuhan`) VALUES
 ('B0001', 'M0002', 'P0001', 'Roti Sobek', '2'),
@@ -48,7 +49,7 @@ INSERT INTO `bom_produk` (`kode_bom`, `kode_bk`, `kode_produk`, `nama_produk`, `
 -- Struktur table `customer`
 --
 CREATE TABLE `customer` (
-  `kode_customer` varchar(100) NOT NULL,
+  `kode_customer` varchar(50) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
@@ -66,7 +67,7 @@ INSERT INTO `customer` (`kode_customer`, `nama`, `email`, `username`, `password`
 -- Struktur table `inventory`
 --
 CREATE TABLE `inventory` (
-  `kode_bk` varchar(75) NOT NULL,
+  `kode_bk` varchar(50) NOT NULL,
   `nama` varchar(75) NOT NULL,
   `qty` varchar(75) NOT NULL,
   `satuan` varchar(75) NOT NULL,
@@ -87,8 +88,8 @@ INSERT INTO `inventory` (`kode_bk`, `nama`, `qty`, `satuan`, `harga`, `tanggal`)
 --
 CREATE TABLE `keranjang` (
   `id_keranjang` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_customer` varchar(100) NOT NULL,
-  `kode_produk` varchar(100) NOT NULL,
+  `kode_customer` varchar(50) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
   `qty` int(11) NOT NULL,
   `harga` int(11) NOT NULL,
@@ -103,7 +104,7 @@ INSERT INTO `keranjang` (`id_keranjang`, `kode_customer`, `kode_produk`, `nama_p
 -- Struktur table `produk`
 --
 CREATE TABLE `produk` (
-  `kode_produk` varchar(100) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `image` text NOT NULL,
   `deskripsi` text NOT NULL,
@@ -121,9 +122,9 @@ INSERT INTO `produk` (`kode_produk`, `nama`, `image`, `deskripsi`, `harga`) VALU
 --
 CREATE TABLE `produksi` (
   `id_order` int(11) NOT NULL AUTO_INCREMENT,
-  `invoice` varchar(200) NOT NULL,
-  `kode_customer` varchar(200) NOT NULL,
-  `kode_produk` varchar(200) NOT NULL,
+  `invoice` varchar(100) NOT NULL,
+  `kode_customer` varchar(50) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
   `nama_produk` varchar(200) NOT NULL,
   `qty` int(11) NOT NULL,
   `harga` int(11) NOT NULL,
@@ -152,8 +153,8 @@ INSERT INTO `produksi` (`id_order`, `invoice`, `kode_customer`, `kode_produk`, `
 --
 CREATE TABLE `report_cancel` (
   `id_report_cancel` int(11) NOT NULL AUTO_INCREMENT,
-  `id_order` varchar(100) NOT NULL,
-  `kode_produk` varchar(100) NOT NULL,
+  `id_order` varchar(50) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
   `jumlah` varchar(100) NOT NULL,
   `tanggal` date NOT NULL,
   PRIMARY KEY (`id_report_cancel`)
@@ -164,7 +165,7 @@ CREATE TABLE `report_cancel` (
 --
 CREATE TABLE `report_inventory` (
   `id_report_inv` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_bk` varchar(100) NOT NULL,
+  `kode_bk` varchar(50) NOT NULL,
   `nama_bahanbaku` varchar(100) NOT NULL,
   `jml_stok_bk` int(11) NOT NULL,
   `tanggal` varchar(11) NOT NULL,
@@ -176,7 +177,7 @@ CREATE TABLE `report_inventory` (
 --
 CREATE TABLE `report_omset` (
   `id_report_omset` int(11) NOT NULL AUTO_INCREMENT,
-  `invoice` varchar(100) NOT NULL,
+  `invoice` varchar(50) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `total_omset` int(11) NOT NULL,
   `tanggal` date NOT NULL,
@@ -184,12 +185,12 @@ CREATE TABLE `report_omset` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
--- Struktur table `report_penjualan` (DIUBAH DARI `report _penjualan`)
+-- Struktur table `report_penjualan`
 --
 CREATE TABLE `report_penjualan` (
   `id_report_sell` int(11) NOT NULL AUTO_INCREMENT,
-  `invoice` varchar(100) NOT NULL,
-  `kode_produk` varchar(100) NOT NULL,
+  `invoice` varchar(50) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
   `jumlah_terjual` int(11) NOT NULL,
   `tanggal` date NOT NULL,
@@ -201,8 +202,8 @@ CREATE TABLE `report_penjualan` (
 --
 CREATE TABLE `report_produksi` (
   `id_report_prd` int(11) NOT NULL AUTO_INCREMENT,
-  `invoice` varchar(100) NOT NULL,
-  `kode_produk` varchar(100) NOT NULL,
+  `invoice` varchar(50) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
   `qty` int(11) NOT NULL,
   `tanggal` date NOT NULL,
@@ -211,12 +212,13 @@ CREATE TABLE `report_produksi` (
 
 -- --------------------------------------------------------
 -- Struktur table `report_profit`
+-- (Dioptimalkan: kode_bom diturunkan panjangnya agar aman saat dijadikan UNIQUE KEY)
 --
 CREATE TABLE `report_profit` (
   `id_report_profit` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_bom` varchar(100) NOT NULL,
-  `invoice` varchar(100) NOT NULL,
-  `kode_produk` varchar(100) NOT NULL,
+  `kode_bom` varchar(50) NOT NULL,
+  `invoice` varchar(50) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
   `jumlah` varchar(11) NOT NULL,
   `total_profit` varchar(11) NOT NULL,
   `tanggal` date NOT NULL,
