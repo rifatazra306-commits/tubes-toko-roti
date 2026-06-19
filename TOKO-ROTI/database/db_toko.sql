@@ -171,7 +171,7 @@ CREATE TABLE `report_inventory` (
   PRIMARY KEY (`id_report_inv`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+-- ---------------------------------------------------------
 -- Struktur table `report_omset`
 --
 CREATE TABLE `report_omset` (
