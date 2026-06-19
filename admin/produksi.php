@@ -1,5 +1,6 @@
 <?php
 include 'header.php';
+$nama_material = [];
 $sortage = mysqli_query($conn, "SELECT * FROM produksi where cek = '1'");
 $cek_sor = mysqli_num_rows($sortage);
 ?>
