@@ -16,7 +16,7 @@ CREATE TABLE `admin` (
   `username` varchar(100) NOT NULL,
   `password` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=l1;
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (1, 'admin', '$2y$10$AIy0X1Ep6alaHDTofiChGeqq7k/d1Kc8vKQf1JZo0mKrzkkj6M626');
