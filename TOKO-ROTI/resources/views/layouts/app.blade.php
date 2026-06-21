@@ -16,10 +16,10 @@
                     <span> <i class="glyphicon glyphicon-earphone"></i> +6287804616097</span>
                 </div>
                 <div class="col-md-4" style="padding: 3px;">
-                    <span><i class="glyphicon glyphicon-envelope"></i> rapi-cakebakery@gmail.com</span>
+                    <span><i class="glyphicon glyphicon-envelope"></i> rivinabakery@gmail.com</span>
                 </div>
                 <div class="col-md-4" style="padding: 3px;">
-                    <span>rapi-cake bakery Indonesia</span>
+                    <span>Rivina Bakery</span>
                 </div>
             </center>
         </div>
@@ -41,7 +41,6 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="{{ route('produk') }}">Products</a></li>
-                    <li><a href="{{ route('about') }}">About Us</a></li>
                     <li><a href="{{ route('manual') }}">User Guide</a></li>
 
                     @if(session()->has('kd_cs'))
@@ -88,7 +87,6 @@
                 <div class="col-md-4">
                     <h5><b>Menu</b></h5>
                     <p><a href="{{ route('produk') }}" style="color: #000">Products</a></p>
-                    <p><a href="{{ route('about') }}" style="color: #000">About Us</a></p>
                     <p><a href="{{ route('manual') }}" style="color: #000">User Guide</a></p>
                 </div>
                 <div class="col-md-4">
