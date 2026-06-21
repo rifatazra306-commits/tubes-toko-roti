@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rivina Bakery</title>
+    <title>Rivina Cake & Bakery</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-theme.css') }}">
@@ -16,10 +16,10 @@
                     <span> <i class="glyphicon glyphicon-earphone"></i> +6283169143507</span>
                 </div>
                 <div class="col-md-4" style="padding: 3px;">
-                    <span><i class="glyphicon glyphicon-envelope"></i> rivinabakery@gmail.com</span>
+                    <span><i class="glyphicon glyphicon-envelope"></i> rivinacakeandbakery@gmail.com</span>
                 </div>
                 <div class="col-md-4" style="padding: 3px;">
-                    <span>Rivina Bakery</span>
+                    <span>Rivina Cake & Bakery</span>
                 </div>
             </center>
         </div>
@@ -34,7 +34,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('home') }}" style="color: #ff8680"><b>Rivina Bakery</b></a>
+                <a class="navbar-brand" href="{{ route('home') }}" style="color: #ff8680"><b>Rivina Cake & Bakery</b></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -79,10 +79,10 @@
         <div class="container" style="padding-bottom: 50px; padding-top: 20px;">
             <div class="row">
                 <div class="col-md-4">
-                    <h3 style="color: #ff8680"><b>Rivina Bakery</b></h3>
+                    <h3 style="color: #ff8680"><b>Rivina Cake & Bakery</b></h3>
                     <p>Jl.Telekomunikasi No. 1, Terusan Buahbatu, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257</p>
                     <p><i class="glyphicon glyphicon-earphone"></i> +6283169143507</p>
-                    <p><i class="glyphicon glyphicon-envelope"></i> rivinabakery@gmail.com</p>
+                    <p><i class="glyphicon glyphicon-envelope"></i> rivinacakeandbakery@gmail.com</p>
                 </div>
                 <div class="col-md-4">
                     <h5><b>Menu</b></h5>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="copy" style="background-color: #ff8680; padding: 5px; color: #fff; text-align: center;">
-            <span>Copyright &copy; Rivina Bakery</span>
+            <span>Copyright &copy; Rivina Cake & Bakery</span>
         </div>
     </footer>
 </body>

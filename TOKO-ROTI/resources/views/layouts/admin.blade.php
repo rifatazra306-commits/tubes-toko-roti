@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rafy Bakery - Admin Panel</title>
+    <title>Rivina Cake & Bakery - Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-theme.css') }}">
@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('admin.dashboard') }}"><b>RAFY BAKERY ADMIN</b></a>
+                <a class="navbar-brand" href="{{ route('admin.dashboard') }}"><b>RIVINA CAKE & BAKERY ADMIN</b></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
