@@ -25,6 +25,7 @@ class Produksi extends Model
         'kode_pos',
         'terima',
         'tolak',
-        'cek'
+        'cek',
+        'status_pembayaran'
     ];
 }

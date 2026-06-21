@@ -43,7 +43,61 @@ class CheckoutController extends Controller
             'kopos' => 'required',
         ]);
 
-        $kode_cs = $request->kode_cs;
+        // Simpan data shipping ke session sementara untuk halaman pembayaran
+        session([
+            'checkout_shipping' => [
+                'kode_cs' => $request->kode_cs,
+                'nama' => $request->nama,
+                'prov' => $request->prov,
+                'kota' => $request->kota,
+                'almt' => $request->almt,
+                'kopos' => $request->kopos,
+            ]
+        ]);
+
+        return redirect()->route('checkout.payment');
+    }
+
+    public function payment()
+    {
+        if (!session()->has('checkout_shipping')) {
+            return redirect()->route('checkout.index')->with('error', 'Silakan isi form alamat terlebih dahulu.');
+        }
+
+        $kode_cs = session('kd_cs');
+        $shipping = session('checkout_shipping');
+        
+        $cartItems = Keranjang::join('produk', 'keranjang.kode_produk', '=', 'produk.kode_produk')
+            ->select(
+                'keranjang.id_keranjang',
+                'keranjang.kode_produk',
+                'keranjang.nama_produk',
+                'keranjang.qty',
+                'produk.harga'
+            )
+            ->where('keranjang.kode_customer', $kode_cs)
+            ->get();
+
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('cart.index')->with('error', 'Keranjang kosong!');
+        }
+
+        return view('payment', compact('shipping', 'cartItems'));
+    }
+
+    public function paymentProcess(Request $request)
+    {
+        if (!session()->has('checkout_shipping')) {
+            return redirect()->route('checkout.index')->with('error', 'Sesi checkout telah kedaluwarsa.');
+        }
+
+        $shipping = session('checkout_shipping');
+        $kode_cs = $shipping['kode_cs'];
+
+        $cartItems = Keranjang::where('kode_customer', $kode_cs)->get();
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('cart.index')->with('error', 'Keranjang kosong!');
+        }
 
         // Generate Invoice
         $lastOrder = Produksi::orderBy('invoice', 'desc')->first();
@@ -64,12 +118,6 @@ class CheckoutController extends Controller
             $format = "INV" . $add;
         }
 
-        $cartItems = Keranjang::where('kode_customer', $kode_cs)->get();
-
-        if ($cartItems->isEmpty()) {
-            return redirect()->route('cart.index')->with('error', 'Keranjang kosong!');
-        }
-
         $tanggal = Carbon::now()->format('Y-m-d');
 
         foreach ($cartItems as $row) {
@@ -82,20 +130,37 @@ class CheckoutController extends Controller
                 'harga' => $row->harga,
                 'status' => 'Pesanan Baru',
                 'tanggal' => $tanggal,
-                'provinsi' => $request->prov,
-                'kota' => $request->kota,
-                'alamat' => $request->almt,
-                'kode_pos' => $request->kopos,
+                'provinsi' => $shipping['prov'],
+                'kota' => $shipping['kota'],
+                'alamat' => $shipping['almt'],
+                'kode_pos' => $shipping['kopos'],
                 'terima' => '0',
                 'tolak' => '0',
-                'cek' => 0
+                'cek' => 0,
+                'status_pembayaran' => 'pending'
             ]);
         }
 
         // Hapus Keranjang
         Keranjang::where('kode_customer', $kode_cs)->delete();
 
-        return redirect()->route('checkout.success');
+        // Bersihkan session shipping
+        session()->forget('checkout_shipping');
+
+        return redirect()->route('checkout.history')->with('success', 'Transaksi berhasil dicatat, menunggu konfirmasi pembayaran!');
+    }
+
+    public function history()
+    {
+        $kode_cs = session('kd_cs');
+        
+        // Ambil riwayat order dikelompokkan berdasarkan Invoice
+        $orders = Produksi::where('kode_customer', $kode_cs)
+            ->orderBy('invoice', 'desc')
+            ->get()
+            ->groupBy('invoice');
+
+        return view('riwayat', compact('orders'));
     }
 
     public function success()

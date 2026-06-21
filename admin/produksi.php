@@ -17,7 +17,8 @@ $cek_sor = mysqli_num_rows($sortage);
 				<th scope="col">No</th>
 				<th scope="col">Invoice</th>
 				<th scope="col">Kode Customer</th>
-				<th scope="col">Status</th>
+				<th scope="col">Status Pembayaran</th>
+				<th scope="col">Status Pengiriman</th>
 				<th scope="col">Tanggal</th>
 				<th scope="col">Action</th>
 			</tr>
@@ -34,7 +35,9 @@ SELECT
     MAX(qty) AS qty,
     MAX(terima) AS terima,
     MAX(tolak) AS tolak,
-    MAX(cek) AS cek
+    MAX(cek) AS cek,
+    MAX(tanggal) AS tanggal,
+    MAX(status_pembayaran) AS status_pembayaran
 FROM produksi
 GROUP BY invoice
 ");
@@ -49,6 +52,13 @@ GROUP BY invoice
 					<td><?= $no; ?></td>
 					<td><?= $row['invoice']; ?></td>
 					<td><?= $row['kode_customer']; ?></td>
+					<td>
+						<?php if(strtolower($row['status_pembayaran']) == 'lunas'){ ?>
+							<span class="label label-success" style="font-size: 11px;">Lunas</span>
+						<?php } else { ?>
+							<span class="label label-warning" style="font-size: 11px;">Pending</span>
+						<?php } ?>
+					</td>
 					<?php if($row['terima'] == 1){ ?>
 						<td style="color: green;font-weight: bold;">Pesanan Diterima (Siap Kirim)
 							<?php
@@ -88,8 +98,12 @@ GROUP BY invoice
 							}
 							?>
 						</td>
-						<td>2020/26-01</td>
+						<td><?= $row['tanggal']; ?></td>
 						<td>
+							<?php if(strtolower($row['status_pembayaran']) != 'lunas'){ ?>
+								<a href="proses/konfirmasi_pembayaran.php?inv=<?= $row['invoice']; ?>" class="btn btn-info" onclick="return confirm('Konfirmasi pembayaran untuk invoice ini?')"><i class="glyphicon glyphicon-usd"></i> Konfirmasi Pembayaran</a>
+							<?php } ?>
+
 							<?php if( $row['tolak']==0 && $row['cek']==1 && $row['terima']==0){ ?>
 								<a href="inventory.php?cek=0" id="rq" class="btn btn-warning"><i class="glyphicon glyphicon-warning-sign"></i> Request Material Shortage</a> 
 								<a href="proses/tolak.php?inv=<?= $row['invoice']; ?>" class="btn btn-danger" onclick="return confirm('Yakin Ingin Menolak ?')"><i class="glyphicon glyphicon-remove-sign"></i> Tolak</a> 

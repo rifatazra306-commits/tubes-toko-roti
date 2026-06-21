@@ -37,6 +37,9 @@ Route::middleware(['customer.auth'])->group(function () {
     
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
+    Route::post('/checkout/payment', [CheckoutController::class, 'paymentProcess'])->name('checkout.payment.process');
+    Route::get('/riwayat', [CheckoutController::class, 'history'])->name('checkout.history');
     Route::get('/selesai', [CheckoutController::class, 'success'])->name('checkout.success');
 });
 

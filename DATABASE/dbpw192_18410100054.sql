@@ -187,7 +187,8 @@ CREATE TABLE `produksi` (
   `kode_pos` varchar(200) NOT NULL,
   `terima` varchar(200) NOT NULL,
   `tolak` varchar(200) NOT NULL,
-  `cek` int(11) NOT NULL
+  `cek` int(11) NOT NULL,
+  `status_pembayaran` varchar(50) DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

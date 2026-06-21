@@ -88,7 +88,38 @@ Ketika admin menekan tombol **Terima Pesanan** (pada rute `admin/produksi/terima
    $$\text{Stok Baru} = \text{Stok Inventory Saat Ini} - (\text{Kebutuhan Resep} \times \text{Jumlah Roti yang Dipesan})$$
 5. Sistem memperbarui data stok di tabel `inventory` dan mengubah status transaksi di tabel `produksi` menjadi **Diterima**.
 
+### C. Alur Kerja Simulasi Pembayaran (Simulated Payment Flow)
+
+Sistem pembayaran pada website ini menggunakan pendekatan **Simulated Payment Flow** (Alur Simulasi Transaksi Internal) untuk memvisualisasikan transaksi dinamis dan pemrosesan status.
+
+```mermaid
+graph TD
+    A[Checkout Form] --> B[Halaman Ringkasan Pembayaran]
+    B --> C{Pilih Metode Pembayaran}
+    C -- QRIS --> D[Tampilkan QR Code Mockup & Instruksi]
+    C -- VA Bank BNI / Mandiri --> E[Tampilkan Nomor VA & Instruksi]
+    D & E --> F[Klik Saya Sudah Bayar]
+    F --> G[Simpan ke DB - status_pembayaran = 'pending']
+    G --> H[Redirect ke Riwayat Belanja]
+    H --> I[Admin Dashboard Native - Klik Konfirmasi Pembayaran]
+    I --> J[Update DB - status_pembayaran = 'Lunas']
+    J --> K[User Refresh Riwayat Belanja - Status 'Lunas']
+```
+
+#### Alur Teknis Pembayaran:
+1. **Pengguna (Pembeli) - Inisiasi**:
+   - Di halaman `/checkout`, setelah mengisi formulir alamat, pengguna mengeklik **Order Sekarang** yang mengarahkan mereka ke `/checkout/payment`.
+   - Di halaman ringkasan pembayaran, pengguna memilih metode (QRIS, VA BNI, atau VA Mandiri). Sistem menggunakan Javascript untuk mengganti instruksi dan menampilkan QR code secara dinamis.
+   - Klik **Saya Sudah Bayar** memicu controller `CheckoutController@paymentProcess` untuk membuat rekaman pesanan di tabel `produksi` dengan `status_pembayaran = 'pending'` dan status pengiriman `status = 'Pesanan Baru'`. Keranjang belanja kemudian dibersihkan.
+   - Pengguna diarahkan ke halaman `/riwayat` (Riwayat Belanja) untuk memantau status pembayaran ("Pending").
+
+2. **Admin - Konfirmasi**:
+   - Di Native PHP Admin panel (`admin/produksi.php`), transaksi baru dengan status `Pending` akan menampilkan tombol **Konfirmasi Pembayaran**.
+   - Mengeklik tombol ini akan memanggil `admin/proses/konfirmasi_pembayaran.php` yang menjalankan query `UPDATE produksi SET status_pembayaran = 'Lunas' WHERE invoice = '$invoice'`.
+   - Setelah konfirmasi, status pembayaran berubah menjadi **Lunas** pada halaman riwayat belanja pengguna.
+
 ---
+
 
 ## 4. Struktur Folder Proyek Laravel (TOKO-ROTI)
 
