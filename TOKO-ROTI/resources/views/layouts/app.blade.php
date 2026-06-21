@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rapi-Cake Bakery</title>
+    <title>Rivina Bakery</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-theme.css') }}">
@@ -34,16 +34,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('home') }}" style="color: #ff8680"><b>RAPI-CAKE BAKERY</b></a>
+                <a class="navbar-brand" href="{{ route('home') }}" style="color: #ff8680"><b>Rivina Bakery</b></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('produk') }}">Produk</a></li>
-                    <li><a href="{{ route('about') }}">Tentang Kami</a></li>
-                    <li><a href="{{ route('manual') }}">Manual Aplikasi</a></li>
-                    
+                    <li><a href="{{ route('produk') }}">Products</a></li>
+                    <li><a href="{{ route('about') }}">About Us</a></li>
+                    <li><a href="{{ route('manual') }}">User Guide</a></li>
+
                     @if(session()->has('kd_cs'))
                         @php
                             $cartCount = \App\Models\Keranjang::where('kode_customer', session('kd_cs'))->count();
@@ -80,16 +80,16 @@
         <div class="container" style="padding-bottom: 50px; padding-top: 20px;">
             <div class="row">
                 <div class="col-md-4">
-                    <h3 style="color: #ff8680"><b>RAPI-CAKE BAKERY</b></h3>
+                    <h3 style="color: #ff8680"><b>Rivina Bakery</b></h3>
                     <p>Jl. Tanah Merah Indah 1 No.10C</p>
-                    <p><i class="glyphicon glyphicon-earphone"></i> +6287804616097</p>
-                    <p><i class="glyphicon glyphicon-envelope"></i> o-cake@gmail.com</p>
+                    <p><i class="glyphicon glyphicon-earphone"></i> +6283123456789</p>
+                    <p><i class="glyphicon glyphicon-envelope"></i> rivinabakery@gmail.com</p>
                 </div>
                 <div class="col-md-4">
                     <h5><b>Menu</b></h5>
-                    <p><a href="{{ route('produk') }}" style="color: #000">Produk</a></p>
-                    <p><a href="{{ route('about') }}" style="color: #000">Tentang kami</a></p>
-                    <p><a href="{{ route('manual') }}" style="color: #000">Manual Aplikasi</a></p>
+                    <p><a href="{{ route('produk') }}" style="color: #000">Products</a></p>
+                    <p><a href="{{ route('about') }}" style="color: #000">About Us</a></p>
+                    <p><a href="{{ route('manual') }}" style="color: #000">User Guide</a></p>
                 </div>
                 <div class="col-md-4">
                 </div>
@@ -97,7 +97,7 @@
         </div>
 
         <div class="copy" style="background-color: #ff8680; padding: 5px; color: #fff; text-align: center;">
-            <span>Copyright &copy; Ahmad Rafi Akbar Putra Hamzah</span>
+            <span>Copyright &copy; Rivina Bakery</span>
         </div>
     </footer>
 </body>
