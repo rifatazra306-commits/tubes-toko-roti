@@ -3,16 +3,15 @@
 		<div class="container" style="padding-bottom: 50px;">
 			<div class="row">
 				<div class="col-md-4">
-					<h3 style="color: #ff8680"><b>RAPI-CAKE BAKERY</b></h3>
+					<h3 style="color: #ff8680"><b>Rivina Bakery </b></h3>
 					<p>Jl. Tanah Merah Indah 1 No.10C</p>
-					<p><i class="glyphicon glyphicon-earphone"></i> +6287804616097</p>
-					<p><i class="glyphicon glyphicon-envelope"></i> o-cake@gmail.com</p>
+					<p><i class="glyphicon glyphicon-earphone"></i> +6283123456789</p>
+					<p><i class="glyphicon glyphicon-envelope"></i> rivinabakery@gmail.com</p>
 				</div>
 				<div class="col-md-4">
 					<h5><b>Menu</b></h5>
-					<p><a href=""  style="color: #000">Produk</a></p>
-					<p><a href=""  style="color: #000">Tentang kami</a></p>
-					<p><a href=""  style="color: #000">Hubungi Kami</a></p>
+					<p><a href="produk.php"  style="color: #000">Produk</a></p>
+					<p><a href="contact.php"  style="color: #000">Contact Us</a></p>
 				</div>
 
 				<div class="col-md-4">

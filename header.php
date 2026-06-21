@@ -9,7 +9,7 @@ if(isset($_SESSION['kd_cs'])){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Rapi-Cake Backery</title>
+	<title>Rivina Bakery </title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
@@ -33,7 +33,7 @@ if(isset($_SESSION['kd_cs'])){
 
 
 				<div class="col-md-4"  style="padding: 3px;">
-					<span>rapi-cake bakery Indonesia</span>
+					<span>Rivina Bakery </span>
 				</div>
 			</center>
 		</div>
@@ -56,8 +56,7 @@ if(isset($_SESSION['kd_cs'])){
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.php">Home</a></li>
 					<li><a href="produk.php">Produk</a></li>
-					<li><a href="about.php">Tentang Kami</a></li>
-					<li><a href="manual.php">Manual Aplikasi</a></li>
+					<li><a href="manual.php">User Guide</a></li>
 					<?php 
 					if(isset($_SESSION['kd_cs'])){
 					$kode_cs = $_SESSION['kd_cs'];
