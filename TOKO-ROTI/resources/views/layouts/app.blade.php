@@ -13,7 +13,7 @@
         <div class="row top">
             <center>
                 <div class="col-md-4" style="padding: 3px;">
-                    <span> <i class="glyphicon glyphicon-earphone"></i> +6287804616097</span>
+                    <span> <i class="glyphicon glyphicon-earphone"></i> +6283169143507</span>
                 </div>
                 <div class="col-md-4" style="padding: 3px;">
                     <span><i class="glyphicon glyphicon-envelope"></i> rivinabakery@gmail.com</span>
@@ -80,8 +80,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <h3 style="color: #ff8680"><b>Rivina Bakery</b></h3>
-                    <p>Jl. Tanah Merah Indah 1 No.10C</p>
-                    <p><i class="glyphicon glyphicon-earphone"></i> +6283123456789</p>
+                    <p>Jl.Telekomunikasi No. 1, Terusan Buahbatu, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257</p>
+                    <p><i class="glyphicon glyphicon-earphone"></i> +6283169143507</p>
                     <p><i class="glyphicon glyphicon-envelope"></i> rivinabakery@gmail.com</p>
                 </div>
                 <div class="col-md-4">
