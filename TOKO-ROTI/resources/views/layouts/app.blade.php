@@ -7,10 +7,28 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-theme.css') }}">
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <style>
+.navbar-default .navbar-nav > li > a{
+    color:#C8B273 !important;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+    color:#E5C76B !important;
+}
+
+.navbar-default .navbar-nav > .open > a{
+    background:#234131 !important;
+    color:#D4AF37 !important;
+}
+
+.navbar-default .navbar-brand{
+    color:#D4AF37 !important;
+}
+</style>
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row top">
+        <div class="row top" style="background:#1F3A2E;color:#C8B273;">
             <center>
                 <div class="col-md-4" style="padding: 3px;">
                     <span> <i class="glyphicon glyphicon-earphone"></i> +6283169143507</span>
@@ -25,7 +43,8 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-default" style="padding: 5px;">
+    <nav class="navbar navbar-default"
+     style="padding:5px;background:#1F3A2E;border:none;border-bottom:1px solid #D4AF37;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -34,7 +53,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('home') }}" style="color: #ff8680"><b>Rivina Cake & Bakery</b></a>
+               <a class="navbar-brand"
+   href="{{ route('home') }}"
+   style="color:#D4AF37;font-weight:bold;"> RIVINA CAKE & BAKERY</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -76,17 +97,17 @@
 
     @yield('content')
 
-    <footer style="border-top: 4px solid #ff8680; margin-top: 50px;">
+    <footer style="border-top:4px solid #D4AF37;background:#F8F5EE; margin-top: 50px;">
         <div class="container" style="padding-bottom: 50px; padding-top: 20px;">
             <div class="row">
                 <div class="col-md-4">
-                    <h3 style="color: #ff8680"><b>Rivina Cake & Bakery</b></h3>
+                    <h3 style="color:#D4AF37"><b>Rivina Cake & Bakery</b></h3>
                     <p>Jl.Telekomunikasi No. 1, Terusan Buahbatu, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257</p>
                     <p><i class="glyphicon glyphicon-earphone"></i> +6283169143507</p>
                     <p><i class="glyphicon glyphicon-envelope"></i> rivinacakeandbakery@gmail.com</p>
                 </div>
                 <div class="col-md-4">
-                    <h5><b>Menu</b></h5>
+                    <h5><b>Home</b></h5>
                     <p><a href="{{ route('produk') }}" style="color: #000">Products</a></p>
                     <p><a href="{{ route('manual') }}" style="color: #000">User Guide</a></p>
                 </div>
@@ -95,7 +116,9 @@
             </div>
         </div>
 
-        <div class="copy" style="background-color: #ff8680; padding: 5px; color: #fff; text-align: center;">
+        <div class="copy"
+     style="background:#1F3A2E;color:#C8B273;
+            padding:5px;text-align:center;">
             <span>Copyright &copy; Rivina Cake & Bakery</span>
         </div>
     </footer>
