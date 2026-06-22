@@ -13,20 +13,20 @@
 }
 
 .navbar-default .navbar-nav > li > a:hover{
-    color:#E5C76B !important;
+   color:#E0C98A !important;
 }
 
 .navbar-default .navbar-nav > .open > a{
     background:#234131 !important;
-    color:#D4AF37 !important;
+    color:#C8B273 !important;
 }
 
 .navbar-default .navbar-brand{
-    color:#D4AF37 !important;
+    color:#C8B273 !important;
 }
 </style>
 </head>
-<body>
+<body style="background:#1F3A2E;">
     <div class="container-fluid">
         <div class="row top" style="background:#1F3A2E;color:#C8B273;">
             <center>
@@ -44,7 +44,7 @@
     </div>
 
     <nav class="navbar navbar-default"
-     style="padding:5px;background:#1F3A2E;border:none;border-bottom:1px solid #D4AF37;">
+     style="padding:5px;background:#1F3A2E;border:none;border-bottom:1px solid #C8B273;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -55,7 +55,7 @@
                 </button>
                <a class="navbar-brand"
    href="{{ route('home') }}"
-   style="color:#D4AF37;font-weight:bold;"> RIVINA CAKE & BAKERY</a>
+   style="color:#C8B273;font-weight:bold;"> RIVINA CAKE & BAKERY</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -75,7 +75,7 @@
 
                     @if(!session()->has('user'))
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> Akun <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> account <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ route('login') }}">Login</a></li>
                                 <li><a href="{{ route('register') }}">Register</a></li>
@@ -97,20 +97,22 @@
 
     @yield('content')
 
-    <footer style="border-top:4px solid #D4AF37;background:#F8F5EE; margin-top: 50px;">
+    <footer style="border-top:4px solid #C8B273;background:#F8F5EE; margin-top: 50px;">
         <div class="container" style="padding-bottom: 50px; padding-top: 20px;">
-            <div class="row">
-                <div class="col-md-4">
-                    <h3 style="color:#D4AF37"><b>Rivina Cake & Bakery</b></h3>
-                    <p>Jl.Telekomunikasi No. 1, Terusan Buahbatu, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257</p>
-                    <p><i class="glyphicon glyphicon-earphone"></i> +6283169143507</p>
-                    <p><i class="glyphicon glyphicon-envelope"></i> rivinacakeandbakery@gmail.com</p>
-                </div>
-                <div class="col-md-4">
-                    <h5><b>Home</b></h5>
-                    <p><a href="{{ route('produk') }}" style="color: #000">Products</a></p>
-                    <p><a href="{{ route('manual') }}" style="color: #000">User Guide</a></p>
-                </div>
+           <div class="row text-center">
+    <div class="col-md-12">
+        <h3 style="color:#C8B273"><b>Rivina Cake & Bakery</b></h3>
+        <p>Jl. Telekomunikasi No. 1, Terusan Buahbatu, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257</p>
+        <p><i class="glyphicon glyphicon-earphone"></i> +6283169143507</p>
+        <p><i class="glyphicon glyphicon-envelope"></i> rivinacakeandbakery@gmail.com</p>
+
+        <br>
+
+        <p><a href="{{ route('home') }}" style="color:#C8B273">Home</a></p>
+        <p><a href="{{ route('produk') }}" style="color:#C8B273">Products</a></p>
+        <p><a href="{{ route('manual') }}" style="color:#C8B273">User Guide</a></p>
+    </div>
+</div>
                 <div class="col-md-4">
                 </div>
             </div>

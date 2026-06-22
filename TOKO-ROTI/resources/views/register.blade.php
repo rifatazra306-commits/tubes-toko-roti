@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container" style="padding-bottom: 250px;">
-    <h2 style="width: 100%; border-bottom: 4px solid #ff8680"><b>Register</b></h2>
+    <h2 style="width: 100%; border-bottom: 4px solid #C8B273; color: #C8B273;">
+        <b>Register</b>
+    </h2>
 
     @if(session('error'))
         <div class="alert alert-danger">
@@ -15,13 +17,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" required>
+                    <label for="nama" style="color: #C8B273;">Name</label>
+                    <input type="text" class="form-control" id="Name" placeholder="Name" name="nama" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" style="color: #C8B273;">Email</label>
                     <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
                 </div>
             </div>
@@ -30,13 +32,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username" style="color: #C8B273;">Username</label>
                     <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="telp">No Telp</label>
+                    <label for="telp" style="color: #C8B273;">No Telp</label>
                     <input type="text" class="form-control" id="telp" placeholder="+62" name="telp" required>
                 </div>
             </div>
@@ -45,14 +47,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password" style="color: #C8B273;">Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="konfirmasi">Konfirmasi Password</label>
-                    <input type="password" class="form-control" id="konfirmasi" placeholder="Konfirmasi Password" name="konfirmasi" required>
+                    <label for="konfirmasi" style="color: #C8B273;">Confirm Password</label>
+                    <input type="password" class="form-control" id="konfirmasi" placeholder="Confirm Password" name="konfirmasi" required>
                 </div>
             </div>
         </div>

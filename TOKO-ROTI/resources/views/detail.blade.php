@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h2 style="width: 100%; border-bottom: 4px solid #ff8680"><b>Detail produk</b></h2>
+    <h2 style="width: 100%; border-bottom: 4px solid #C8B273; color:#C8B273;">
+        <b>Product details</b>
+    </h2>
 
     <div class="row">
         <div class="col-md-4">
@@ -18,29 +20,29 @@
                 <table class="table table-striped">
                     <tbody>
                         <tr>
-                            <td><b>Nama</b></td>
+                            <td><b>Name</b></td>
                             <td>{{ $product->nama }}</td>
                         </tr>
                         <tr>
-                            <td><b>Harga</b></td>
+                            <td><b>Price</b></td>
                             <td>Rp.{{ number_format($product->harga) }}</td>
                         </tr>
                         <tr>
-                            <td><b>Deskripsi</b></td>
+                            <td><b>Description</b></td>
                             <td>{{ $product->deskripsi }}</td>
                         </tr>
                         <tr>
-                            <td><b>Jumlah</b></td>
+                            <td><b>Quantity</b></td>
                             <td><input class="form-control" type="number" min="1" name="jml" value="1" style="width: 155px;"></td>
                         </tr>
                     </tbody>
                 </table>
                 @if(session()->has('user'))
-                    <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Tambahkan ke Keranjang</button>
+                    <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart, color: #d72c2c;"></i> Add to Cart</button>
                 @else
-                    <a href="{{ route('cart.index') }}" class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Tambahkan ke Keranjang</a>
+                    <a href="{{ route('cart.index') }}" class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Add to Cart</a>
                 @endif
-                <a href="{{ route('produk') }}" class="btn btn-warning"> Kembali Belanja</a>
+                <a href="{{ route('produk') }}" class="btn btn-warning"> Continue Shopping</a>
             </form>
         </div>
     </div>
