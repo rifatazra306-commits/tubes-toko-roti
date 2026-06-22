@@ -39,17 +39,7 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-stats"></i> Laporan <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ route('admin.report.penjualan') }}">Laporan Penjualan</a></li>
-                            <li><a href="{{ route('admin.report.profit') }}">Laporan Profit</a></li>
-                            <li><a href="{{ route('admin.report.omset') }}">Laporan Omset</a></li>
-                            <li><a href="{{ route('admin.report.pembatalan') }}">Laporan Pembatalan</a></li>
-                            <li><a href="{{ route('admin.report.inventory') }}">Laporan Inventory</a></li>
-                            <li><a href="{{ route('admin.report.produksi') }}">Laporan Produksi</a></li>
-                        </ul>
-                    </li>
+
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                 </ul>
 
@@ -69,8 +59,6 @@
         @yield('content')
     </div>
 
-    <footer style="background-color: gray; padding: 10px; margin-top: 50px;" class="print">
-        <h5 class="text-center" style="color: white; margin: 0;">Copyright &copy; Ahmad Rafi Akbar Putra Hamzah</h5>
-    </footer>
+
 </body>
 </html>

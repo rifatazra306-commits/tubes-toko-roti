@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\InventoryController as AdminInventoryController;
 use App\Http\Controllers\Admin\ProductionController as AdminProductionController;
-use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 
 // Rute Pelanggan (Customer Front-end)
@@ -76,16 +75,8 @@ Route::middleware(['admin.auth'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/produksi/detail/{invoice}', [AdminProductionController::class, 'detail'])->name('produksi.detail');
     Route::post('/produksi/terima/{invoice}', [AdminProductionController::class, 'accept'])->name('produksi.accept');
     Route::post('/produksi/tolak/{invoice}', [AdminProductionController::class, 'reject'])->name('produksi.reject');
+    Route::get('/produksi/konfirmasi-pembayaran/{invoice}', [AdminProductionController::class, 'confirmPayment'])->name('produksi.confirm-payment');
     
     // Kelola Resep (BOM)
     Route::get('/bom', [AdminProductionController::class, 'bom'])->name('bom.index');
-    
-    // Laporan & Ekspor Admin
-    Route::get('/laporan/omset', [AdminReportController::class, 'omset'])->name('report.omset');
-    Route::get('/laporan/pembatalan', [AdminReportController::class, 'pembatalan'])->name('report.pembatalan');
-    Route::get('/laporan/penjualan', [AdminReportController::class, 'penjualan'])->name('report.penjualan');
-    Route::get('/laporan/produksi', [AdminReportController::class, 'produksi'])->name('report.produksi');
-    Route::get('/laporan/profit', [AdminReportController::class, 'profit'])->name('report.profit');
-    
-    Route::get('/laporan/{type}/export', [AdminReportController::class, 'export'])->name('report.export');
 });
