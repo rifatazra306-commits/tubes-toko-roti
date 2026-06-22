@@ -19,7 +19,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=l1;
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$AIy0X1Ep6alaHDTofiChGeqq7k/d1Kc8vKQf1JZo0mKrzkkj6M626');
+(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 -- Struktur table `bom_produk`
@@ -59,9 +59,9 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `customer` (`kode_customer`, `nama`, `email`, `username`, `password`, `telp`) VALUES
-('C0002', 'Rafi Akbar', 'a.rafy@gmail.com', 'rafi', '$2y$10$/UjGYbisTPJhr8MgmT37qOXo1o/HJn3dhafPoSYbOlSN1E7olHIb.', '0856748564'),
-('C0003', 'Nagita Silvana', 'bambang@gmail.com', 'Nagita', '$2y$10$47./qEeA/y3rNx3UkoKmkuxoAtmz4ebHSR0t0Bc.cFEEg7cK34M3C', '087804616097'),
-('C0004', 'Nadiya', 'nadiya@gmail.com', 'nadiya', '$2y$10$6wHH.7rF1q3JtzKgAhNFy.4URchgJC8R.POT1osTAWmasDXTTO7ZG', '0898765432');
+('C0002', 'Rafi Akbar', 'a.rafy@gmail.com', 'rafi', 'rafi', '0856748564'),
+('C0003', 'Nagita Silvana', 'bambang@gmail.com', 'Nagita', 'Nagita', '087804616097'),
+('C0004', 'Nadiya', 'nadiya@gmail.com', 'nadiya', 'nadiya', '0898765432');
 
 -- --------------------------------------------------------
 -- Struktur table `inventory`

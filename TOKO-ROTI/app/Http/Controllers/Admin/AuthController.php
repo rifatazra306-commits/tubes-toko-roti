@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         $admin = Admin::where('username', $request->user)->first();
 
-        if ($admin && password_verify($request->pass, $admin->password)) {
+        if ($admin && $request->pass === $admin->password) {
             session([
                 'admin' => $admin->username
             ]);
