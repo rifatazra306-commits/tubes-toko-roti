@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produk;
-use App\Models\Inventory;
-use App\Models\BomProduk;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
@@ -29,8 +27,7 @@ class ProductController extends Controller
         }
         $nextCode = 'P' . str_pad($add, 4, '0', STR_PAD_LEFT);
 
-        $materials = Inventory::all();
-        return view('admin.tm_produk', compact('nextCode', 'materials'));
+        return view('admin.tm_produk', compact('nextCode'));
     }
 
     public function store(Request $request)
@@ -39,19 +36,10 @@ class ProductController extends Controller
             'kode' => 'required',
             'nama' => 'required',
             'harga' => 'required|numeric',
+            'stok' => 'required|numeric|min:0',
             'desk' => 'required',
             'files' => 'required|image|max:1024' // format JPG, JPEG, PNG, max 1MB
         ]);
-
-        // Generate next BOM code (B0001, B0002, etc.)
-        $lastBom = BomProduk::orderBy('kode_bom', 'desc')->first();
-        if ($lastBom) {
-            $num = (int) substr($lastBom->kode_bom, 1, 4);
-            $add = $num + 1;
-        } else {
-            $add = 1;
-        }
-        $nextBomCode = 'B' . str_pad($add, 4, '0', STR_PAD_LEFT);
 
         // Upload image
         $file = $request->file('files');
@@ -65,25 +53,9 @@ class ProductController extends Controller
             'nama' => $request->nama,
             'image' => $filename,
             'deskripsi' => $request->desk,
-            'harga' => $request->harga
+            'harga' => $request->harga,
+            'stok' => $request->stok
         ]);
-
-        // Save BOM
-        $materials = $request->material;
-        $kebs = $request->keb;
-        if ($materials) {
-            foreach ($materials as $index => $materialCode) {
-                if (!empty($materialCode) && !empty($kebs[$index])) {
-                    BomProduk::create([
-                        'kode_bom' => $nextBomCode,
-                        'kode_bk' => $materialCode,
-                        'kode_produk' => $request->kode,
-                        'nama_produk' => $request->nama,
-                        'kebutuhan' => $kebs[$index]
-                    ]);
-                }
-            }
-        }
 
         return redirect()->route('admin.produk.index')->with('success', 'PRODUK BERHASIL DITAMBAHKAN');
     }
@@ -99,6 +71,7 @@ class ProductController extends Controller
         $request->validate([
             'nama' => 'required',
             'harga' => 'required|numeric',
+            'stok' => 'required|numeric|min:0',
             'desk' => 'required',
             'files' => 'nullable|image|max:1024'
         ]);
@@ -108,6 +81,7 @@ class ProductController extends Controller
         $updateData = [
             'nama' => $request->nama,
             'harga' => $request->harga,
+            'stok' => $request->stok,
             'deskripsi' => $request->desk
         ];
 
@@ -144,9 +118,6 @@ class ProductController extends Controller
 
         // Delete product
         $product->delete();
-
-        // Delete BOM
-        BomProduk::where('kode_produk', $id)->delete();
 
         return redirect()->route('admin.produk.index')->with('success', 'PRODUK BERHASIL DIHAPUS');
     }

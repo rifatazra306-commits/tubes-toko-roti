@@ -9,9 +9,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
-use App\Http\Controllers\Admin\InventoryController as AdminInventoryController;
 use App\Http\Controllers\Admin\ProductionController as AdminProductionController;
-use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 
 // Rute Pelanggan (Customer Front-end)
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -59,16 +57,8 @@ Route::middleware(['admin.auth'])->prefix('admin')->name('admin.')->group(functi
     Route::post('/produk/{id}', [AdminProductController::class, 'update'])->name('produk.update');
     Route::get('/produk/{id}/delete', [AdminProductController::class, 'delete'])->name('produk.delete');
     
-    // Kelola Inventory Admin
-    Route::get('/inventory', [AdminInventoryController::class, 'index'])->name('inventory.index');
-    Route::get('/inventory/create', [AdminInventoryController::class, 'create'])->name('inventory.create');
-    Route::post('/inventory', [AdminInventoryController::class, 'store'])->name('inventory.store');
-    Route::get('/inventory/{id}/edit', [AdminInventoryController::class, 'edit'])->name('inventory.edit');
-    Route::post('/inventory/{id}', [AdminInventoryController::class, 'update'])->name('inventory.update');
-    Route::get('/inventory/{id}/delete', [AdminInventoryController::class, 'delete'])->name('inventory.delete');
-    
-    // Kelola Customer Admin
-    Route::get('/customer', [AdminCustomerController::class, 'index'])->name('customer.index');
+
+
     
     // Kelola Produksi / Pesanan Admin
     Route::get('/produksi', [AdminProductionController::class, 'index'])->name('produksi.index');
@@ -76,7 +66,4 @@ Route::middleware(['admin.auth'])->prefix('admin')->name('admin.')->group(functi
     Route::post('/produksi/terima/{invoice}', [AdminProductionController::class, 'accept'])->name('produksi.accept');
     Route::post('/produksi/tolak/{invoice}', [AdminProductionController::class, 'reject'])->name('produksi.reject');
     Route::get('/produksi/konfirmasi-pembayaran/{invoice}', [AdminProductionController::class, 'confirmPayment'])->name('produksi.confirm-payment');
-    
-    // Kelola Resep (BOM)
-    Route::get('/bom', [AdminProductionController::class, 'bom'])->name('bom.index');
 });

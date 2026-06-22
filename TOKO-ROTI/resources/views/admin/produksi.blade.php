@@ -59,8 +59,8 @@
                         @endif
 
                         @if($row->tolak == 0 && $row->cek == 1 && $row->terima == 0)
-                            <a href="{{ route('admin.inventory.index') }}" class="btn btn-warning">
-                                <i class="glyphicon glyphicon-warning-sign"></i> Request Material Shortage
+                            <a href="{{ route('admin.produk.index') }}" class="btn btn-warning">
+                                <i class="glyphicon glyphicon-warning-sign"></i> Request Product Stock
                             </a>
                             <form action="{{ route('admin.produksi.reject', $row->invoice) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin Ingin Menolak?')">
                                 @csrf
@@ -91,20 +91,20 @@
         <br><br>
         <div class="row">
             <div class="col-md-4 bg-danger" style="padding: 10px; border-radius: 4px;">
-                <h4>Kekurangan Material</h4>
-                <h5 style="color: red; font-weight: bold;">Silahkan Tambah Stok Material dibawah ini :</h5>
+                <h4>Kekurangan Stok Produk</h4>
+                <h5 style="color: red; font-weight: bold;">Silahkan Tambah Stok Produk dibawah ini :</h5>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Material</th>
+                            <th>Nama Produk</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($shortageMaterials as $index => $materialName)
+                        @foreach($shortageMaterials as $index => $productName)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $materialName }}</td>
+                                <td>{{ $productName }}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -46,66 +46,18 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="stok">Stok Awal</label>
+                    <input type="number" class="form-control" id="stok" placeholder="Contoh : 50" name="stok" min="0" required>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
             <label for="desk">Deskripsi</label>
             <textarea name="desk" class="form-control" rows="4" required></textarea>
-        </div>
-
-        <hr>
-        <h3 style="width: 100%; border-bottom: 4px solid gray">BOM Produk</h3>
-        <br>
-        
-        <div class="row">
-            <div class="col-md-6">
-                <h4>Daftar Material yang ada di Gudang/Inventory</h4>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Kode Material</th>
-                            <th scope="col">Nama Material</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php $no2 = 1; @endphp
-                        @foreach($materials as $material)
-                            <tr>
-                                <th scope="row">{{ $no2 }}</th>
-                                <td>{{ $material->kode_bk }}</td>
-                                <td>{{ $material->nama }}</td>
-                            </tr>
-                            @php $no2++; @endphp
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="col-md-6">
-                <h4>Pilih material yang hanya dibutuhkan untuk produk</h4>
-                <div class="bg-danger" style="padding: 10px; border-radius: 4px; margin-bottom: 10px;">
-                    <p style="color: red; font-weight: bold; margin: 0;">NB. Form di bawah tidak harus diisi semua</p>
-                    <p style="color: red; font-weight: bold; margin: 0;">Kode Material tidak boleh sama</p>
-                </div>
-                <br>
-                
-                @for($i = 0; $i < count($materials); $i++)
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Kode Material</label>
-                                <input type="text" name="material[]" class="form-control" placeholder="Masukkan Kode Material">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Kebutuhan Material</label>
-                                <input type="text" class="form-control" placeholder="Contoh : 250 atau 0.2" name="keb[]">
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-            </div>
         </div>
 
         <div class="row" style="margin-top: 20px;">

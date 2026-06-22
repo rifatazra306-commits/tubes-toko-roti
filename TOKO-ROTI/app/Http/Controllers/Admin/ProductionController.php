@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produksi;
-use App\Models\Inventory;
-use App\Models\BomProduk;
-use App\Models\Customer;
 use App\Models\Produk;
+use App\Models\Customer;
 
 class ProductionController extends Controller
 {
@@ -36,16 +34,12 @@ class ProductionController extends Controller
             $orderHasShortage = false;
 
             foreach ($items as $item) {
-                $bomItems = BomProduk::where('kode_produk', $item->kode_produk)->get();
-                foreach ($bomItems as $bomItem) {
-                    $inv = Inventory::where('kode_bk', $bomItem->kode_bk)->first();
-                    if ($inv) {
-                        $bomQty = (float) $bomItem->kebutuhan * (int) $item->qty;
-                        $hasil = (float) $inv->qty - $bomQty;
-                        if ($hasil < 0 && $order->tolak == 0) {
-                            $shortageMaterials[] = $inv->nama;
-                            $orderHasShortage = true;
-                        }
+                $product = Produk::where('kode_produk', $item->kode_produk)->first();
+                if ($product) {
+                    $hasil = (int) $product->stok - (int) $item->qty;
+                    if ($hasil < 0 && $order->tolak == 0) {
+                        $shortageMaterials[] = $product->nama;
+                        $orderHasShortage = true;
                     }
                 }
             }
@@ -53,6 +47,10 @@ class ProductionController extends Controller
             if ($orderHasShortage) {
                 Produksi::where('invoice', $order->invoice)->update(['cek' => 1]);
                 $order->cek = 1;
+            } else {
+                // If there's no shortage, reset cek to 0
+                Produksi::where('invoice', $order->invoice)->update(['cek' => 0]);
+                $order->cek = 0;
             }
         }
 
@@ -91,16 +89,12 @@ class ProductionController extends Controller
             $orderHasShortage = false;
 
             foreach ($items as $item) {
-                $bomItems = BomProduk::where('kode_produk', $item->kode_produk)->get();
-                foreach ($bomItems as $bomItem) {
-                    $inv = Inventory::where('kode_bk', $bomItem->kode_bk)->first();
-                    if ($inv) {
-                        $bomQty = (float) $bomItem->kebutuhan * (int) $item->qty;
-                        $hasil = (float) $inv->qty - $bomQty;
-                        if ($hasil < 0 && $order->tolak == 0) {
-                            $shortageMaterials[] = $inv->nama;
-                            $orderHasShortage = true;
-                        }
+                $product = Produk::where('kode_produk', $item->kode_produk)->first();
+                if ($product) {
+                    $hasil = (int) $product->stok - (int) $item->qty;
+                    if ($hasil < 0 && $order->tolak == 0) {
+                        $shortageMaterials[] = $product->nama;
+                        $orderHasShortage = true;
                     }
                 }
             }
@@ -108,6 +102,9 @@ class ProductionController extends Controller
             if ($orderHasShortage) {
                 Produksi::where('invoice', $order->invoice)->update(['cek' => 1]);
                 $order->cek = 1;
+            } else {
+                Produksi::where('invoice', $order->invoice)->update(['cek' => 0]);
+                $order->cek = 0;
             }
         }
 
@@ -122,20 +119,17 @@ class ProductionController extends Controller
         $items = Produksi::where('invoice', $invoice)->get();
 
         foreach ($items as $item) {
-            $bomItems = BomProduk::where('kode_produk', $item->kode_produk)->get();
-            foreach ($bomItems as $bomItem) {
-                $inv = Inventory::where('kode_bk', $bomItem->kode_bk)->first();
-                if ($inv) {
-                    $bomQty = (float) $bomItem->kebutuhan * (int) $item->qty;
-                    $newQty = (float) $inv->qty - $bomQty;
-                    Inventory::where('kode_bk', $bomItem->kode_bk)->update(['qty' => $newQty]);
-                }
+            $product = Produk::where('kode_produk', $item->kode_produk)->first();
+            if ($product) {
+                $newStok = (int) $product->stok - (int) $item->qty;
+                // Avoid dropping below 0, or just let it update
+                Produk::where('kode_produk', $item->kode_produk)->update(['stok' => $newStok]);
             }
         }
 
         Produksi::where('invoice', $invoice)->update(['terima' => 1, 'status' => '0']);
 
-        return redirect()->route('admin.produksi.index')->with('success', 'PESANAN BERHASIL DITERIMA, BAHAN BAKU TELAH DIKURANGKAN');
+        return redirect()->route('admin.produksi.index')->with('success', 'PESANAN BERHASIL DITERIMA, STOK PRODUK TELAH DIKURANGKAN');
     }
 
     public function reject($invoice)
@@ -150,20 +144,5 @@ class ProductionController extends Controller
         Produksi::where('invoice', $invoice)->update(['status_pembayaran' => 'Lunas']);
 
         return redirect()->route('admin.produksi.index')->with('success', 'Pembayaran Invoice ' . $invoice . ' Berhasil Dikonfirmasi!');
-    }
-
-    public function bom(Request $request)
-    {
-        $kode = $request->get('kode');
-        $selectedProduct = Produk::where('kode_produk', $kode)->firstOrFail();
-        
-        $bomItems = BomProduk::join('inventory', 'bom_produk.kode_bk', '=', 'inventory.kode_bk')
-            ->select('inventory.nama as nama', 'bom_produk.kebutuhan as jml', 'inventory.satuan as satu')
-            ->where('bom_produk.kode_produk', $kode)
-            ->get();
-
-        $products = Produk::all();
-
-        return view('admin.bom', compact('products', 'selectedProduct', 'bomItems'));
     }
 }
