@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         $customer = Customer::where('username', $request->username)->first();
 
-        if ($customer && password_verify($request->pass, $customer->password)) {
+        if ($customer && $request->pass === $customer->password) {
             session([
                 'user' => $customer->nama,
                 'kd_cs' => $customer->kode_customer
@@ -81,14 +81,12 @@ class AuthController extends Controller
             $format = "C" . $add;
         }
 
-        $hash = password_hash($request->password, PASSWORD_DEFAULT);
-
         Customer::create([
             'kode_customer' => $format,
             'nama' => $request->nama,
             'email' => $request->email,
             'username' => $request->username,
-            'password' => $hash,
+            'password' => $request->password,
             'telp' => $request->telp
         ]);
 
