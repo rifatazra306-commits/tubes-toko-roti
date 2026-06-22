@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" style="padding-bottom: 300px;">
-    <h2 style="width: 100%; border-bottom: 4px solid #ff8680"><b>Keranjang</b></h2>
+    <h2 style="width: 100%; border-bottom: 4px solid  #C8B273; color: #C8B273;"><b>Cart</b></h2>
     
     @if(session('success'))
         <div class="alert alert-success">
@@ -14,13 +14,13 @@
         @if(count($cartItems) > 0)
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Harga</th>
-                    <th scope="col">Qty</th>
-                    <th scope="col">SubTotal</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" style="color: #C8B273;">No</th>
+                    <th scope="col" style="color: #C8B273;">Image</th>
+                    <th scope="col" style="color: #C8B273;">Name</th>
+                    <th scope="col" style="color: #C8B273;">Price</th>
+                    <th scope="col" style="color: #C8B273;">Quantity</th>
+                    <th scope="col" style="color: #C8B273;">SubTotal</th>
+                    <th scope="col" style="color: #C8B273;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,25 +58,25 @@
                 </tr>
                 <tr>
                     <td colspan="7" style="text-align: right; font-weight: bold;">
-                        <a href="{{ route('produk') }}" class="btn btn-success">Lanjutkan Belanja</a> 
+                        <a href="{{ route('produk') }}" class="btn btn-success">Continue Shopping</a> 
                         <a href="{{ route('checkout.index') }}" class="btn btn-primary">Checkout</a>
                     </td>
                 </tr>
             @else
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Harga</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">SubTotal</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" style="color: #C8B273;">No</th>
+                        <th scope="col" style="color: #C8B273;">Image</th>
+                        <th scope="col" style="color: #C8B273;">Name</th>
+                        <th scope="col" style="color: #C8B273;">Price</th>
+                        <th scope="col" style="color: #C8B273;">Quantity</th>
+                        <th scope="col" style="color: #C8B273;">SubTotal</th>
+                        <th scope="col" style="color: #C8B273;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="7" class="text-center bg-warning"><h5><b>KERANJANG BELANJA ANDA KOSONG</b></h5></td>
+                        <td colspan="7" class="text-center bg-warning"><h5><b>YOUR SHOPPING CART IS EMPTY</b></h5></td>
                     </tr>
                 </tbody>
             @endif

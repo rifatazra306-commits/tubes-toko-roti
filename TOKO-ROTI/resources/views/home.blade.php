@@ -13,7 +13,7 @@
 <!-- PRODUK TERBARU -->
 <div class="container">
   
-    <h2 style="width: 100%; border-bottom: 4px solid #C8B273; margin-top: 80px;"><b>Our Products</b></h2>
+    <h2 style="width: 100%; border-bottom: 4px solid #C8B273; margin-top: 80px; color: #C8B273;"><b>Our Products</b></h2>
 
     <div class="row">
         @foreach($products as $row)

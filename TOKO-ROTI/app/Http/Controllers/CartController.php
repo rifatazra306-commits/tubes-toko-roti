@@ -53,9 +53,9 @@ class CartController extends Controller
         }
 
         if ($hal == 1) {
-            return redirect()->route('cart.index')->with('success', 'BERHASIL DITAMBAHKAN KE KERANJANG');
+            return redirect()->route('cart.index')->with('success', 'SUCCESSFULLY ADDED TO CART');
         } else {
-            return redirect()->route('produk.detail', $id)->with('success', 'BERHASIL DITAMBAHKAN KE KERANJANG');
+            return redirect()->route('produk.detail', $id)->with('success', 'SUCCESSFULLY ADDED TO CART');
         }
     }
 
@@ -70,7 +70,7 @@ class CartController extends Controller
         $item->qty = $request->qty;
         $item->save();
 
-        return redirect()->route('cart.index')->with('success', 'KERANJANG BERHASIL DIPERBARUI');
+        return redirect()->route('cart.index')->with('success', 'CART SUCCESSFULLY UPDATED');
     }
 
     public function delete($id)
@@ -81,6 +81,6 @@ class CartController extends Controller
             
         $item->delete();
 
-        return redirect()->route('cart.index')->with('success', '1 PRODUK DIHAPUS');
+        return redirect()->route('cart.index')->with('success', 'ITEM SUCCESSFULLY REMOVED FROM CART');
     }
 }
