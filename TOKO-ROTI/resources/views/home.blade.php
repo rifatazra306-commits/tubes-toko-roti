@@ -25,18 +25,18 @@
                         <h4>Rp.{{ number_format($row->harga) }}</h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{ route('produk.detail', $row->kode_produk) }}" class="btn btn-warning btn-block">Detail</a> 
+                                <a href="{{ route('produk.detail', $row->kode_produk) }}" class="btn btn-warning btn-block">Details</a> 
                             </div>
                             @if(session()->has('kd_cs'))
                                 <div class="col-md-6">
                                     <a href="{{ route('cart.add', ['id' => $row->kode_produk, 'kd_cs' => session('kd_cs'), 'hal' => 1]) }}" class="btn btn-success btn-block" role="button">
-                                        <i class="glyphicon glyphicon-shopping-cart"></i> Tambah
+                                        <i class="glyphicon glyphicon-shopping-cart"></i> Add to Cart
                                     </a>
                                 </div>
                             @else
                                 <div class="col-md-6">
                                     <a href="{{ route('cart.index') }}" class="btn btn-success btn-block" role="button">
-                                        <i class="glyphicon glyphicon-shopping-cart"></i> Tambah
+                                        <i class="glyphicon glyphicon-shopping-cart"></i> Add to Cart
                                     </a>
                                 </div>
                             @endif
