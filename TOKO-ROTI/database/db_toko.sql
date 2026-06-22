@@ -109,13 +109,14 @@ CREATE TABLE `produk` (
   `image` text NOT NULL,
   `deskripsi` text NOT NULL,
   `harga` int(11) NOT NULL,
+  `stok` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`kode_produk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `produk` (`kode_produk`, `nama`, `image`, `deskripsi`, `harga`) VALUES
-('P0001', 'Roti Sobek', '5f1d915d27dc3.jpg', 'Roti Enak Sobek Sobek aww', 10000),
-('P0002', 'Maryam', '5f1d9154715a4.jpg', 'Roti araym', 15000),
-('P0003', 'Kue tart coklat', '5f1d924614831.jpg', 'Kuetar dengan varian rasa coklat enak dan lumer rasanya', 100000);
+INSERT INTO `produk` (`kode_produk`, `nama`, `image`, `deskripsi`, `harga`, `stok`) VALUES
+('P0001', 'Roti Sobek', '5f1d915d27dc3.jpg', 'Roti Enak Sobek Sobek aww', 10000, 50),
+('P0002', 'Maryam', '5f1d9154715a4.jpg', 'Roti araym', 15000, 30),
+('P0003', 'Kue tart coklat', '5f1d924614831.jpg', 'Kuetar dengan varian rasa coklat enak dan lumer rasanya', 100000, 10);
 
 -- --------------------------------------------------------
 -- Struktur table `produksi`

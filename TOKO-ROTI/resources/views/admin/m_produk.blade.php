@@ -18,6 +18,7 @@
                 <th scope="col">Nama Produk</th>
                 <th scope="col">Image</th>
                 <th scope="col">Harga</th>
+                <th scope="col">Stok</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -30,10 +31,10 @@
                     <td>{{ $row->nama }}</td>
                     <td><img src="{{ asset('image/produk/' . $row->image) }}" width="100"></td>
                     <td>Rp.{{ number_format($row->harga) }}</td>
+                    <td>{{ $row->stok }}</td>
                     <td>
                         <a href="{{ route('admin.produk.edit', $row->kode_produk) }}" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></a> 
                         <a href="{{ route('admin.produk.delete', $row->kode_produk) }}" class="btn btn-danger" onclick="return confirm('Yakin Ingin Menghapus Data ?')"><i class="glyphicon glyphicon-trash"></i></a> 
-                        <a href="{{ route('admin.bom.index', ['kode' => $row->kode_produk]) }}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i> Lihat BOM</a>
                     </td>
                 </tr>
                 @php $no++; @endphp

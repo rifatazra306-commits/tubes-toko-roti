@@ -23,21 +23,9 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-folder-close"></i> Data Master <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ route('admin.produk.index') }}">Master Produk</a></li>
-                            <li><a href="{{ route('admin.customer.index') }}">Master Customer</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{{ route('admin.produk.index') }}"><i class="glyphicon glyphicon-folder-close"></i> Master Produk</a></li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-retweet"></i> Data Transaksi <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ route('admin.produksi.index') }}">Produksi</a></li>
-                            <li><a href="{{ route('admin.inventory.index') }}">Inventory</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{{ route('admin.produksi.index') }}"><i class="glyphicon glyphicon-retweet"></i> Pesanan</a></li>
 
 
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>

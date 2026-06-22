@@ -45,6 +45,15 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="stok">Stok</label>
+                    <input type="number" class="form-control" id="stok" placeholder="Masukkan Stok" name="stok" value="{{ $product->stok }}" min="0" required>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
             <label for="desk">Deskripsi</label>
             <textarea name="desk" class="form-control" rows="4" required>{{ trim($product->deskripsi) }}</textarea>
