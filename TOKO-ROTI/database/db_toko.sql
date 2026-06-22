@@ -16,7 +16,7 @@ CREATE TABLE `admin` (
   `username` varchar(100) NOT NULL,
   `password` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=l1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
@@ -148,83 +148,5 @@ INSERT INTO `produksi` (`id_order`, `invoice`, `kode_customer`, `kode_produk`, `
 (11, 'INV0003', 'C0003', 'P0003', 'Kue tart coklat', 1, 100000, '0', '2020-07-27', 'Jawa Tengah', 'Yogyakarta', 'Jl.Malioboro, Blok A 10D', '30123', '1', '0', 0),
 (12, 'INV0003', 'C0003', 'P0001', 'Roti Sobek', 1, 10000, '0', '2020-07-27', 'Jawa Tengah', 'Yogyakarta', 'Jl.Malioboro, Blok A 10D', '30123', '1', '0', 0),
 (13, 'INV0004', 'C0004', 'P0002', 'Maryam', 1, 15000, 'Pesanan Baru', '2020-07-26', 'Jawa Timur', 'Sidoarjo', 'Jl.KH Syukur Blok C 18 A', '50987', '0', '0', 0);
-
--- --------------------------------------------------------
--- Struktur table `report_cancel`
---
-CREATE TABLE `report_cancel` (
-  `id_report_cancel` int(11) NOT NULL AUTO_INCREMENT,
-  `id_order` varchar(50) NOT NULL,
-  `kode_produk` varchar(50) NOT NULL,
-  `jumlah` varchar(100) NOT NULL,
-  `tanggal` date NOT NULL,
-  PRIMARY KEY (`id_report_cancel`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
--- Struktur table `report_inventory`
---
-CREATE TABLE `report_inventory` (
-  `id_report_inv` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_bk` varchar(50) NOT NULL,
-  `nama_bahanbaku` varchar(100) NOT NULL,
-  `jml_stok_bk` int(11) NOT NULL,
-  `tanggal` varchar(11) NOT NULL,
-  PRIMARY KEY (`id_report_inv`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
--- Struktur table `report_omset`
---
-CREATE TABLE `report_omset` (
-  `id_report_omset` int(11) NOT NULL AUTO_INCREMENT,
-  `invoice` varchar(50) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `total_omset` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  PRIMARY KEY (`id_report_omset`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
--- Struktur table `report_penjualan`
---
-CREATE TABLE `report_penjualan` (
-  `id_report_sell` int(11) NOT NULL AUTO_INCREMENT,
-  `invoice` varchar(50) NOT NULL,
-  `kode_produk` varchar(50) NOT NULL,
-  `nama_produk` varchar(100) NOT NULL,
-  `jumlah_terjual` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  PRIMARY KEY (`id_report_sell`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
--- Struktur table `report_produksi`
---
-CREATE TABLE `report_produksi` (
-  `id_report_prd` int(11) NOT NULL AUTO_INCREMENT,
-  `invoice` varchar(50) NOT NULL,
-  `kode_produk` varchar(50) NOT NULL,
-  `nama_produk` varchar(100) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  PRIMARY KEY (`id_report_prd`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
--- Struktur table `report_profit`
--- (Dioptimalkan: kode_bom diturunkan panjangnya agar aman saat dijadikan UNIQUE KEY)
---
-CREATE TABLE `report_profit` (
-  `id_report_profit` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_bom` varchar(50) NOT NULL,
-  `invoice` varchar(50) NOT NULL,
-  `kode_produk` varchar(50) NOT NULL,
-  `jumlah` varchar(11) NOT NULL,
-  `total_profit` varchar(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  PRIMARY KEY (`id_report_profit`),
-  UNIQUE KEY `kode_bom` (`kode_bom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 COMMIT;
