@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h2 style="width: 100%; border-bottom: 4px solid #D4AF37"><b>Our Products</b></h2>
+    <h2 style="width:100%; border-bottom:4px solid #C8B273; color:#C8B273;">
+    <b>Our Products</b>
+</h2>
 
     <div class="row">
         @foreach($products as $row)
