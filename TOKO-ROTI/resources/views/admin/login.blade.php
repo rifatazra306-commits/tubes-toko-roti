@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Admin - Rafy Bakery</title>
+    <title>Login Admin - Rivina Cake & Bakery</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <style type="text/css">
@@ -20,7 +20,8 @@
             margin-bottom: 20px;
             text-align: center;
             font-weight: bold;
-            color: #ff8680;
+            color: #C8B273;
+;
         }
     </style>
 </head>
@@ -45,7 +46,7 @@
                     <label for="pass">Password</label>
                     <input type="password" class="form-control" id="pass" placeholder="Password" name="pass" required autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-warning btn-block" style="background-color: #ff8680; border-color: #ff8680; color: white;">Login</button>
+                <button type="submit" class="btn btn-warning btn-block" style="background-color: #C8B273; border-color: #C8B273; color: white;">Login</button>
             </form>
         </div>
     </div>
