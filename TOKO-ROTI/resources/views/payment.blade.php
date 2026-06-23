@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="container" style="padding-bottom: 200px">
-    <h2 style="width: 100%; border-bottom: 4px solid #ff8680"><b>Ringkasan Pembayaran</b></h2>
+    <h2 style="width: 100%; border-bottom: 4px solid #C8B273; color: #C8B273;"><b>Ringkasan Pembayaran</b></h2>
     
     <div class="row">
         <div class="col-md-6">
-            <h4>Order List</h4>
+            <h4 style="color: #C8B273;"><b>Order List</b></h4>
             <table class="table table-striped">
                 <thead>
-                    <tr>
+                    <tr style="background-color: #f9f9f9; color: #C8B273; font-weight: bold;">
                         <th>No</th>
                         <th>Name</th>
                         <th>Price</th>
@@ -37,13 +37,13 @@
                         @php $no++; @endphp
                     @endforeach
                     <tr style="background-color: #f9f9f9;">
-                        <td colspan="5" style="text-align: right; font-weight: bold; font-size: 16px; color: #ff8680;">Grand Total = Rp.{{ number_format($grandTotal) }}</td>
+                        <td colspan="5" style="text-align: right; font-weight: bold; font-size: 16px; color: #C8B273;">Grand Total = Rp.{{ number_format($grandTotal) }}</td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="panel panel-default" style="margin-top: 20px;">
-                <div class="panel-heading" style="background-color: #fdf5f5; color: #ff8680; font-weight: bold;">
+                <div class="panel-heading" style="background-color: #fdf5f5; color: #C8B273; font-weight: bold;">
                     Alamat Pengiriman
                 </div>
                 <div class="panel-body">
@@ -54,9 +54,9 @@
         </div>
 
         <div class="col-md-6">
-            <div class="panel panel-primary" style="border-color: #ff8680;">
-                <div class="panel-heading" style="background-color: #ff8680; border-color: #ff8680; font-weight: bold;">
-                    select payment method
+            <div class="panel panel-primary" style="border-color: #C8B273;">
+                <div class="panel-heading" style="background-color: #C8B273; border-color: #C8B273; font-weight: bold;">
+                    Select Payment Method
                 </div>
                 <div class="panel-body">
                     <form action="{{ route('checkout.payment.process') }}" method="POST">
